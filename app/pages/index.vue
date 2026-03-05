@@ -5,6 +5,7 @@
 <template>
   <Navbar />
   <Hero />
+  <WhyUs />
   <Clients />
   <Services />
   <CaseStudies />

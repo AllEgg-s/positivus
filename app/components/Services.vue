@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const data = {
-  header: "Услуги",
-  subheader: "Оказываем полный спектр IT-услуг для бизнеса и частных клиентов: от разработки до технической поддержки и сопровождения.",
+  header: "Какие ИИ-решения мы разрабатываем",
+  subheader: "Полный спектр решений на базе искусственного интеллекта — от консультации до реализации и поддержки.",
   image: "images/illustrations/service-image.png",
   services: [
     {
       cardClass: "bg-muted dark:bg-muted-foreground",
       titleClass: "bg-primary dark:text-secondary",
-      title: "Разработка веб-сайтов и порталов",
+      title: "RAG-системы",
       linkButtonClass: "bg-secondary text-primary hover:bg-secondary hover:text-primary",
       linkTextClass: "dark:text-secondary",
       image: "images/illustrations/image-1.png",
@@ -22,7 +22,7 @@ const data = {
     {
       cardClass: "bg-primary",
       titleClass: "bg-muted",
-      title: "Разработка мобильных приложений",
+      title: "Текстовые симуляторы",
       linkButtonClass: "bg-secondary text-primary hover:bg-secondary hover:text-primary",
       linkTextClass: "dark:text-secondary",
       image: "images/illustrations/image-2.png",
@@ -30,7 +30,7 @@ const data = {
     {
       cardClass: "bg-secondary",
       titleClass: "bg-muted dark:bg-muted-foreground dark:text-secondary",
-      title: "Поддержка и администрирование IT-инфраструктуры",
+      title: "Интеллектуальные помощники",
       linkButtonClass: "bg-muted dark:bg-primary text-secondary hover:bg-secondary hover:text-primary dark:hover:text-secondary",
       linkTextClass: "text-muted dark:text-muted-foreground",
       image: "images/illustrations/image-3.png",
@@ -38,7 +38,7 @@ const data = {
     {
       cardClass: "bg-muted dark:bg-muted-foreground",
       titleClass: "bg-primary dark:text-secondary",
-      title: "Автоматизация бизнес-процессов",
+      title: "Цифровая трансформация",
       linkButtonClass: "bg-secondary text-primary hover:bg-secondary hover:text-primary",
       linkTextClass: "dark:text-secondary",
       image: "images/illustrations/image-4.png",
@@ -46,7 +46,7 @@ const data = {
     {
       cardClass: "bg-primary",
       titleClass: "bg-secondary text-muted dark:text-foreground",
-      title: "Техническая поддержка пользователей",
+      title: "Data Science и машинное обучение",
       linkButtonClass: "bg-secondary text-primary hover:bg-secondary hover:text-primary",
       linkTextClass: "dark:text-secondary",
       image: "images/illustrations/image-5.png",
@@ -54,7 +54,7 @@ const data = {
     {
       cardClass: "bg-secondary",
       titleClass: "bg-primary dark:text-secondary",
-      title: "Кибербезопасность и защита данных",
+      title: "Уникальные AI-решения",
       linkButtonClass: "bg-muted dark:bg-primary text-secondary hover:bg-secondary hover:text-primary dark:hover:text-secondary",
       linkTextClass: "text-muted dark:text-muted-foreground",
       image: "images/illustrations/image-6.png",

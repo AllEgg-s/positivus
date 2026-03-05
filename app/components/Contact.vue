@@ -17,8 +17,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 const formSchema = toTypedSchema(z.object({
   type: z.enum(["message", "quote"]),
   name: z.string().min(3).max(100),
-  email: z.email(),
-  message: z.string().min(10).max(255),
+  phone_number: z.string().min(10, "Введите корректный номер телефона"),
+  message: z.string().min(10).max(1000),
 }));
 
 const form = useForm({
@@ -28,8 +28,36 @@ const form = useForm({
   },
 });
 
-const onSubmit = form.handleSubmit((values) => {
-  console.log("Form submitted!", values);
+const isSubmitting = ref(false);
+const submitSuccess = ref(false);
+const submitError = ref("");
+
+const onSubmit = form.handleSubmit(async (values) => {
+  isSubmitting.value = true;
+  submitError.value = "";
+  submitSuccess.value = false;
+  try {
+    const typeLabel = values.type === "message" ? "Нужна консультация" : "Нужен расчет стоимости";
+    const comment = `Тип: ${typeLabel}\n\n${values.message}`;
+    await $fetch("https://api.iok-intellect.online/applications", {
+      method: "POST",
+      body: {
+        name: values.name,
+        phone_number: values.phone_number,
+        comment,
+      },
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    submitSuccess.value = true;
+    form.resetForm();
+  } catch (e) {
+    submitError.value = "Не удалось отправить заявку. Попробуйте позже или свяжитесь по телефону.";
+  } finally {
+    isSubmitting.value = false;
+  }
 });
 
 const data = {
@@ -45,6 +73,17 @@ const data = {
       :header="data.header"
       :subheader="data.subheader"
     />
+
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+      <a href="mailto:info@iok-intellect.ru" class="flex items-center gap-2 hover:text-foreground hover:underline">
+        <Icon name="mdi:email" size="18" />
+        info@iok-intellect.ru
+      </a>
+      <a href="tel:+79161648457" class="flex items-center gap-2 hover:text-foreground hover:underline">
+        <Icon name="mdi:phone" size="18" />
+        +7 916 164-84-57
+      </a>
+    </div>
 
     <div class="mt-12 bg-muted rounded-3xl flex flex-col lg:flex-row justify-between items-center p-10 lg:py-0 lg:pe-0 gap-12">
       <form @submit="onSubmit" class="max-w-xl w-full">
@@ -91,12 +130,12 @@ const data = {
             </FormItem>
           </FormField>
 
-          <FormField v-slot="{ componentField }" name="email">
+          <FormField v-slot="{ componentField }" name="phone_number">
             <FormItem>
-              <FormLabel>Эл. почта</FormLabel>
+              <FormLabel>Телефон</FormLabel>
 
               <FormControl>
-                <Input type="text" placeholder="Введите вашу почту" v-bind="componentField" class="bg-white" />
+                <Input type="tel" placeholder="+7 999 123-45-67" v-bind="componentField" class="bg-white" />
               </FormControl>
 
               <FormMessage />
@@ -121,8 +160,19 @@ const data = {
           </FormField>
         </div>
 
-        <Button type="submit" size="lg" class="bg-secondary text-secondary-foreground hover:text-primary-foreground mt-4 w-full cursor-pointer">
-          Отправить заявку
+        <p v-if="submitSuccess" class="text-sm text-green-600 dark:text-green-400 mt-2">
+          Заявка отправлена. Мы свяжемся с вами в ближайшее время.
+        </p>
+        <p v-if="submitError" class="text-sm text-red-600 dark:text-red-400 mt-2">
+          {{ submitError }}
+        </p>
+        <Button
+          type="submit"
+          size="lg"
+          class="bg-secondary text-secondary-foreground hover:text-primary-foreground mt-4 w-full cursor-pointer"
+          :disabled="isSubmitting"
+        >
+          {{ isSubmitting ? "Отправка..." : "Отправить заявку" }}
         </Button>
       </form>
 

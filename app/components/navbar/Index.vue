@@ -7,6 +7,7 @@ const mode = useColorMode();
 
 const navigation = [
   { label: "О нас", to: "#hero" },
+  { label: "Почему мы", to: "#why-us" },
   { label: "Услуги", to: "#services" },
   { label: "Кейсы", to: "#cases" },
   { label: "Тарифы", to: "#contact" },

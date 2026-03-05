@@ -1,9 +1,5 @@
-<script lang="ts" setup>
-import { useColorMode } from "@vueuse/core";
-
-const mode = useColorMode();
-</script>
-
 <template>
-  <NuxtImg :src=" mode === 'light' ? 'images/logo.png' : 'images/logo-dark.png'" width="150" />
+  <NuxtLink to="/" class="text-xl font-semibold text-foreground hover:opacity-90">
+    ООО ИНТЕЛЛЕКТ ПЛЮС
+  </NuxtLink>
 </template>

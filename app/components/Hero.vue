@@ -2,8 +2,9 @@
 import { Button } from '@/components/ui/button';
 
 const data = {
-  title: "IT-аутсорс, который развивает ваш бизнес",
-  description: "Берем на себя разработку, поддержку и развитие цифровых продуктов. Работаем с компаниями и частными клиентами: от разовых задач до долгосрочного сопровождения.",
+  title: "Создаем ИИ-решения, которые работают там, где остальные только обещают.",
+  subheader: "Партнер, подтвердивший компетенции на международном уровне и в проектах с институтами развития.",
+  description: "Мы не просто пишем код. Мы — технологический партнер полного цикла, который берет на себя ответственность за результат: от смелой идеи до круглосуточной поддержки готового продукта.",
   image: "images/illustrations/hero-illustration.png",
 };
 </script>
@@ -14,6 +15,7 @@ const data = {
       <div class="space-y-2">
         <h1 class="w-4/4 md:w-2/3 text-5xl md:text-6xl font-bold">{{ data.title }}</h1>
 
+        <p class="w-5/6 md:w-4/9 text-muted-foreground">{{ data.subheader }}</p>
         <p class="w-5/6 md:w-4/9 text-muted-foreground">{{ data.description }}</p>
       </div>
 
