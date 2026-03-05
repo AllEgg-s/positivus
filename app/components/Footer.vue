@@ -38,7 +38,7 @@ import { Separator } from '@/components/ui/separator'
                         <div class="flex items-center space-x-2">
                             <Icon name="mdi:location" size="20" />
                             <div class="flex flex-col">
-                                <span>Москва, ул. Тверская, 12, офис 504</span>
+                                <span>129226, город Москва, Сельскохозяйственная ул, д. 11 к. 3, помещ. 2/1</span>
                                 <span>Работаем по всей России и удаленно</span>
                             </div>
                         </div>
